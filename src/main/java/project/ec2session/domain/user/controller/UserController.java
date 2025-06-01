@@ -1,5 +1,6 @@
 package project.ec2session.domain.user.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -16,20 +17,21 @@ import project.ec2session.domain.user.service.UserService;
 @RestController
 @RequestMapping("/api/v1/users")
 @RequiredArgsConstructor
-public class UserController {
+@Tag(name = "유저 관련 API", description = "유저에 관련한 API (유저 조회, 닉네임 수정)")
+public class UserController implements UserControllerSwagger{
     private final UserService userService;
 
-    @GetMapping("/me")
+    @Override
     public ResponseEntity<?> getUserInfo(@AuthenticationPrincipal CustomUserDetails userDetails) {
         return ResponseEntity.ok(userService.readById(userDetails.getUserId()));
     }
 
-    @GetMapping
+    @Override
     public ResponseEntity<?> getAllUser() {
         return ResponseEntity.ok(userService.readAll());
     }
 
-    @PutMapping
+    @Override
     public ResponseEntity<?> updateUserInfo(@AuthenticationPrincipal CustomUserDetails userDetails,
                                             @RequestBody @Valid UserReq.UpdateInfo request) {
         userService.update(userDetails.getUserId(), request);

@@ -21,9 +21,9 @@ public interface UserControllerSwagger {
                     content = @Content(mediaType = "application/json", examples = {
                             @ExampleObject(value = """
                                     {
-                                        "userId": "<userId>",
-                                        "username": "<username>",
-                                        "nickname": "<nickname>"
+                                        "userId": "1",
+                                        "username": "동민",
+                                        "nickname": "eastmin"
                                     }
                                     """)
                     })),
@@ -45,11 +45,7 @@ public interface UserControllerSwagger {
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "닉네임 변경 성공",
                     content = @Content(mediaType = "application/json", examples = {
-                            @ExampleObject(value = """
-                                    {
-                                        "요청 성공"
-                                    }
-                                    """)
+                            @ExampleObject(value = "요청 성공")
                     })),
             @ApiResponse(responseCode = "404", description = "유저 정보 조회 실패",
                     content = @Content(mediaType = "application/json", examples = {
