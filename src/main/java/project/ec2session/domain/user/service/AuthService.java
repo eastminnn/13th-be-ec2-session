@@ -37,7 +37,9 @@ public class AuthService {
         }
 
         String accessToken = jwtUtil.generateAccessToken(user.getId(), user.getUsername());
+        Long userId = user.getId();
 
-        return TokenDto.of(accessToken);
+
+        return TokenDto.of(accessToken, userId);
     }
 }

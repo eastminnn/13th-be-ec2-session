@@ -19,7 +19,12 @@ public interface AuthControllerSwagger {
                     content = @Content(mediaType = "application/json", examples = {
                             @ExampleObject(value = """
                                     {
-                                    "accessToken" : "<accessToken>"
+                                    "status" : 200,
+                                    "message" : "로그인에 성공하였습니다.",
+                                    "data" : {
+                                        "accessToken" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwidXNlclYzIiLCJpYXQiOjE3NDg4NDAzMzUsI",
+                                        "userId" : 1
+                                        }
                                     }
                                     """)
                     })),
@@ -60,7 +65,11 @@ public interface AuthControllerSwagger {
                     content = @Content(mediaType = "application/json", examples = {
                             @ExampleObject(value = """
                                     {
-                                    "userId" : 1
+                                    "status" : 200,
+                                    "message" : "회원가입에 성공하였습니다.",
+                                    "data" : {
+                                        "userId" : 1
+                                        }
                                     }
                                     """)
                     })),
@@ -77,9 +86,8 @@ public interface AuthControllerSwagger {
                     content = @Content(mediaType = "application/json", examples = {
                             @ExampleObject(value = """
                                     {
-                                    "password": "비밀번호는 필수 입력 값입니다.",
-                                    "nickname": "닉네임은 필수 입력 값입니다.",
-                                    "username": "아이디는 필수 입력 값입니다."
+                                    "status" : 400,
+                                    "message": "fieldName 은 필수 입력 값입니다."
                                     }
                                     """)
                     }))

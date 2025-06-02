@@ -1,9 +1,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${DATABASE_HOST:localhost}:${DATABASE_PORT:3306}/${DATABASE_NAME:test}
-    username: ${DATABASE_USER:root}
-    password: ${DATABASE_PASS:password}
+    url: jdbc:mysql://localhost:3306/security
+    username: root
+    password:
 
   jpa:
     hibernate:
@@ -14,8 +14,8 @@ spring:
         dialect: org.hibernate.dialect.MySQLDialect
 
 jwt:
-  secret-key: ${JWT_KEY}
-  issuer: ${JWT_ISSUER}
+  secret-key: ea22adbebe6370b18b153b74ffcb126448c5299649fa4a02070733101d14a300
   expiration:
-    access-token: ${JWT_AT_EXPIRATION}
-    refresh-token: ${JWT_RT_EXPIRATION}
+    access-token: 1800000
+    refresh-token: 7200000
+  issuer: ec2

@@ -1,5 +1,6 @@
 package project.ec2session.domain.user.controller;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +18,7 @@ import project.ec2session.domain.user.service.UserService;
 @RestController
 @RequestMapping("/api/v1/users")
 @RequiredArgsConstructor
+@SecurityRequirement(name = "bearerAuth")
 @Tag(name = "유저 관련 API", description = "유저에 관련한 API (유저 조회, 닉네임 수정)")
 public class UserController implements UserControllerSwagger{
     private final UserService userService;
