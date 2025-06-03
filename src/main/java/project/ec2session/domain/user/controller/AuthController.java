@@ -42,6 +42,7 @@ public class AuthController implements AuthControllerSwagger{
         Long userId = authService.signUp(request);
 
         Map<String, Object> response = new HashMap<>();
+        response.put("message", "회원가입이 완료되었습니다");
         response.put("userId", userId);
         return ResponseEntity.ok(response);
     }

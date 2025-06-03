@@ -61,7 +61,7 @@ public interface AuthControllerSwagger {
 
     @Operation(summary = "회원가입", description = "회원가입 시도")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "로그인 성공",
+            @ApiResponse(responseCode = "200", description = "회원가입 성공",
                     content = @Content(mediaType = "application/json", examples = {
                             @ExampleObject(value = """
                                     {

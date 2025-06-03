@@ -38,8 +38,9 @@ public class AuthService {
 
         String accessToken = jwtUtil.generateAccessToken(user.getId(), user.getUsername());
         Long userId = user.getId();
+        String message = "로그인에 성공하였습니다.";
 
 
-        return TokenDto.of(accessToken, userId);
+        return TokenDto.of(message, accessToken, userId);
     }
 }
