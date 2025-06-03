@@ -1,6 +1,7 @@
 package project.ec2session.domain.user.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -90,4 +91,28 @@ public interface UserControllerSwagger {
     @RequestMapping(method = RequestMethod.GET)
     ResponseEntity<?> getAllUser();
 
+
+    @Operation(summary = "유저 삭제", description = "유저 삭제 시도")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "유저 삭제 성공",
+                    content = @Content(mediaType = "application/json", examples = {
+                            @ExampleObject(value = """
+                                    {
+                                        "status" : 200,
+                                        "message" : "삭제 성공"
+                                    }
+                                    """)
+                    })),
+            @ApiResponse(responseCode = "404", description = "유저 정보 조회 실패",
+                    content = @Content(mediaType = "application/json", examples = {
+                            @ExampleObject(value = """
+                                    {
+                                        "status" : 404,
+                                        "message" : "존재하지않는 회원입니다."
+                                    }
+                                    """)
+                    }))
+    })
+    @RequestMapping(method = RequestMethod.DELETE)
+    ResponseEntity<?> delete(@Parameter(description = "삭제하고싶은 userId") Long id);
 }

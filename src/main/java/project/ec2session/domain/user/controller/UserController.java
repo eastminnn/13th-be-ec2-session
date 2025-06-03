@@ -15,6 +15,8 @@ import project.ec2session.common.auth.CustomUserDetails;
 import project.ec2session.domain.user.dto.UserReq;
 import project.ec2session.domain.user.service.UserService;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api/v1/users")
 @RequiredArgsConstructor
@@ -37,6 +39,13 @@ public class UserController implements UserControllerSwagger{
     public ResponseEntity<?> updateUserInfo(@AuthenticationPrincipal CustomUserDetails userDetails,
                                             @RequestBody @Valid UserReq.UpdateInfo request) {
         userService.update(userDetails.getUserId(), request);
-        return ResponseEntity.ok("요청 성공");
+        return ResponseEntity.ok(Map.of("message", "삭제 성공"));
+    }
+
+    @Override
+    public ResponseEntity<?> delete(Long id) {
+        userService.delete(id);
+
+        return ResponseEntity.ok(Map.of("message", "삭제 성공"));
     }
 }

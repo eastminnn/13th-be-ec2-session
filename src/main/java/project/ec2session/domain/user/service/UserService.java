@@ -39,4 +39,12 @@ public class UserService {
 
         user.updateInfo(updateInfo.nickname());
     }
+
+    @Transactional
+    public void delete(Long id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new CustomException(ErrorCode.USER_NOT_FOUND));
+
+        userRepository.deleteById(id);
+    }
 }
